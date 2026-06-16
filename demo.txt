@@ -1,0 +1,4 @@
+Hello everyone
+Welcome to Java programming
+File handling is important in Java
+This is an example of writing data to a file
