@@ -1,53 +1,56 @@
-package com.example.training.oop;
-interface Animal2{
-	int legs=4;
-	public abstract void eat();
-	public void sound();
-	//Interfaces can support the complete or non-abstract methods after java 8 version
-	default void sleep()
-	{
-		System.out.println("Sleep");
-	}
+package com.example.workshop;
+//Interface data base for ops 
+//Object is not created for interfaces
+interface IDBOps{
+	//Here the default methods such as public abstract
+	public abstract void connect();
+	void execute();
+	void close();
 }
-class Cat2 implements Animal2{
-	public void eat()
+//Mysql vendor(3rd party person)
+class Mysql implements IDBOps
+{
+	public  void connect()
 	{
-		System.out.println("Fish is eaten by cat");
+		System.out.println("Connected to MYSQL++");
 	}
-	public void sound()
-	{
-		System.out.println("Meow Meow");
-	}
+	 public  void execute()
+	 {
+		 System.out.println("Executed Query on MYSQL++");
+	 }
+	 public void close()
+	 {
+		 System.out.println("Disconnected from MYSQL++");
+	 }
 }
-class Lion implements Animal2{
-	public void eat()
+//Mongo vendor
+class Mongo implements IDBOps
+{
+	public  void connect()
 	{
-		System.out.println("Deer is eaten by lion");
+		System.out.println("Connected to Mongo**");
 	}
-	public void sound()
-	{
-		System.out.println("Roar");
-	}
+	 public  void execute()
+	 {
+		 System.out.println("Executed Query on Mongo**");
+	 }
+	 public void close()
+	 {
+		 System.out.println("Disconnected from Mongo**");
+	 }
 }
-public class InterfaceExample {
+public class InterfaceExample { 
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-    Lion l=new Lion();
-    l.eat();
-    l.sound();
-    System.out.println("The lion has"+l.legs+" legs");
-     l.sleep();//TO call sleep using lion object the method should be declared as default
-    Cat2 c=new Cat2();
-    c.eat();
-    c.sound();
-    System.out.println("The cat has "+l.legs+" legs");
+      Mysql m=new Mysql();
+      m.connect();
+      m.execute();
+      m.close();
+      IDBOps mg=new Mongo();//IDBOps super class can refer to its sub class objects
+      mg.connect();
+      mg.execute();
+      mg.close();
 	}
 
 }
-/*
-Deer is eaten by lion
-Roar
-Fish is eaten by cat
-Meow Meow
-*/
